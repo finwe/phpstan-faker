@@ -1,8 +1,8 @@
 # Faker extensions for PHPStan
 
-[![Build Status](https://travis-ci.org/phpstan/phpstan-doctrine.svg)](https://travis-ci.org/finwe/phpstan-faker)
-[![Latest Stable Version](https://poser.pugx.org/phpstan/phpstan-doctrine/v/stable)](https://packagist.org/packages/finwe/phpstan-faker)
-[![License](https://poser.pugx.org/phpstan/phpstan-doctrine/license)](https://packagist.org/packages/finwe/phpstan-faker)
+[![Build Status](https://travis-ci.org/finwe/phpstan-faker.svg)](https://travis-ci.org/finwe/phpstan-faker)
+[![Latest Stable Version](https://poser.pugx.org/finwe/phpstan-faker/v/stable)](https://packagist.org/packages/finwe/phpstan-faker)
+[![License](https://poser.pugx.org/finwe/phpstan-faker/license)](https://packagist.org/packages/finwe/phpstan-faker)
 
 * [PHPStan](https://github.com/phpstan/phpstan)
 * [Faker](https://github.com/fzaninotto/Faker)
