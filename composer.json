@@ -1,0 +1,19 @@
+{
+    "name": "finwe/phpstan-faker",
+    "description": "PHPStan extension for fzaninotto/Faker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matěj Humpál",
+            "email": "finwe@finwe.info"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "Finwe\\": ["src/"]
+        }
+    },
+
+    "require": {}
+}

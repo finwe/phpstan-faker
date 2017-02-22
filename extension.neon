@@ -1,0 +1,11 @@
+parameters:
+
+services:
+	-
+		class: Finwe\PHPStan\Faker\Reflection\FakerPropertiesClassReflectionExtension
+		tags:
+			- phpstan.broker.propertiesClassReflectionExtension
+	-
+		class: Finwe\PHPStan\Faker\Reflection\FakerMethodsClassReflectionExtension
+		tags:
+			- phpstan.broker.methodsClassReflectionExtension
