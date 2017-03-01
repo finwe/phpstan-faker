@@ -26,52 +26,52 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 	public function __construct()
 	{
 		$this->methods = [
-			'asciify' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string')], FALSE], //@method string asciify($string = '****')
-			'bothify' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string')], FALSE], //@method string bothify($string = '## ??')
-			'creditCardNumber' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('type'), $this->bp('formatted'), $this->sp('separator')], FALSE], //@method string creditCardNumber($type = null, $formatted = false, $separator = '-')
-			'date' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('format'), $this->sp('max')], FALSE], //@method string date($format = 'Y-m-d', $max = 'now')
-			'file' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('sourceDirectory'), $this->sp('targetDirectory'), $this->bp('fullpath')], FALSE], //@method string file($sourceDirectory = '/tmp', $targetDirectory = '/tmp', $fullPath = true)
-			'iban' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('countryCode'), $this->sp('prefix'), $this->ip('length')], FALSE], //@method string iban($countryCode = null, $prefix = '', $length = null)
-			'image' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('dir'), $this->ip('width'), $this->ip('height'), $this->sp('category'), $this->bp('fullpath')], FALSE], //@method string image($dir = null, $width = 640, $height = 480, $category = null, $fullPath = true)
-			'imageUrl' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ip('width'), $this->ip('height'), $this->sp('category'), $this->bp('randomize'), $this->sp('word')], FALSE], //@method string imageUrl($width = 640, $height = 480, $category = null, $randomize = true, $word = null)
-			'lexify' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string')], FALSE], //@method string lexify($string = '????')
-			'numerify' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string')], FALSE], //@method string numerify($string = '###')
-			'paragraph' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ip('nbSentences'), $this->bp('variableNbSentences')], FALSE], //@method string paragraph($nbSentences = 3, $variableNbSentences = true)
-			'password' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ip('minLength'), $this->ip('maxLength')], FALSE], //@method string password($minLength = 6, $maxLength = 20)
-			'realText' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ip('maxNbChars'), $this->ip('indexSize')], FALSE], //@method string realText($maxNbChars = 200, $indexSize = 2)
-			'regexify' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string')], FALSE], //@method string regexify($regex = '')
-			'sentence' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('nbWords'), $this->sp('variableNbWords')], FALSE], //@method string sentence($nbWords = 6, $variableNbWords = true)
-			'shuffleString' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string'), $this->sp('encoding')], FALSE], //@method string shuffleString($string = '', $encoding = 'UTF-8')
-			'slug' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ip('nbWords'), $this->bp('variableNbWords')], FALSE], //@method string slug($nbWords = 6, $variableNbWords = true)
-			'text' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ip('maxNbChars')], FALSE], //@method string text($maxNbChars = 200)
-			'time' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('format'), $this->sp('max')], FALSE], //@method string time($format = 'H:i:s', $max = 'now')
-			'toLower' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string')], FALSE], //@method string toLower($string = '')
-			'toUpper' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->sp('string')], FALSE], //@method string toUpper($string = '')
+			'asciify' => [new StringType(true), false, false, true, [$this->sp('string')], false], //@method string asciify($string = '****')
+			'bothify' => [new StringType(true), false, false, true, [$this->sp('string')], false], //@method string bothify($string = '## ??')
+			'creditCardNumber' => [new StringType(true), false, false, true, [$this->sp('type'), $this->bp('formatted'), $this->sp('separator')], false], //@method string creditCardNumber($type = null, $formatted = false, $separator = '-')
+			'date' => [new StringType(true), false, false, true, [$this->sp('format'), $this->sp('max')], false], //@method string date($format = 'Y-m-d', $max = 'now')
+			'file' => [new StringType(true), false, false, true, [$this->sp('sourceDirectory'), $this->sp('targetDirectory'), $this->bp('fullpath')], false], //@method string file($sourceDirectory = '/tmp', $targetDirectory = '/tmp', $fullPath = true)
+			'iban' => [new StringType(true), false, false, true, [$this->sp('countryCode'), $this->sp('prefix'), $this->ip('length')], false], //@method string iban($countryCode = null, $prefix = '', $length = null)
+			'image' => [new StringType(true), false, false, true, [$this->sp('dir'), $this->ip('width'), $this->ip('height'), $this->sp('category'), $this->bp('fullpath')], false], //@method string image($dir = null, $width = 640, $height = 480, $category = null, $fullPath = true)
+			'imageUrl' => [new StringType(true), false, false, true, [$this->ip('width'), $this->ip('height'), $this->sp('category'), $this->bp('randomize'), $this->sp('word')], false], //@method string imageUrl($width = 640, $height = 480, $category = null, $randomize = true, $word = null)
+			'lexify' => [new StringType(true), false, false, true, [$this->sp('string')], false], //@method string lexify($string = '????')
+			'numerify' => [new StringType(true), false, false, true, [$this->sp('string')], false], //@method string numerify($string = '###')
+			'paragraph' => [new StringType(true), false, false, true, [$this->ip('nbSentences'), $this->bp('variableNbSentences')], false], //@method string paragraph($nbSentences = 3, $variableNbSentences = true)
+			'password' => [new StringType(true), false, false, true, [$this->ip('minLength'), $this->ip('maxLength')], false], //@method string password($minLength = 6, $maxLength = 20)
+			'realText' => [new StringType(true), false, false, true, [$this->ip('maxNbChars'), $this->ip('indexSize')], false], //@method string realText($maxNbChars = 200, $indexSize = 2)
+			'regexify' => [new StringType(true), false, false, true, [$this->sp('string')], false], //@method string regexify($regex = '')
+			'sentence' => [new StringType(true), false, false, true, [$this->sp('nbWords'), $this->sp('variableNbWords')], false], //@method string sentence($nbWords = 6, $variableNbWords = true)
+			'shuffleString' => [new StringType(true), false, false, true, [$this->sp('string'), $this->sp('encoding')], false], //@method string shuffleString($string = '', $encoding = 'UTF-8')
+			'slug' => [new StringType(true), false, false, true, [$this->ip('nbWords'), $this->bp('variableNbWords')], false], //@method string slug($nbWords = 6, $variableNbWords = true)
+			'text' => [new StringType(true), false, false, true, [$this->ip('maxNbChars')], false], //@method string text($maxNbChars = 200)
+			'time' => [new StringType(true), false, false, true, [$this->sp('format'), $this->sp('max')], false], //@method string time($format = 'H:i:s', $max = 'now')
+			'toLower' => [new StringType(true), false, false, true, [$this->sp('string')], false], //@method string toLower($string = '')
+			'toUpper' => [new StringType(true), false, false, true, [$this->sp('string')], false], //@method string toUpper($string = '')
 
-			'dateTimeBetween' => [new ObjectType(DateTime::class, true), FALSE, FALSE, TRUE, [$this->sp('startDate'), $this->sp('endDate')], FALSE], //@method \DateTime dateTimeBetween($startDate = '-30 years', $endDate = 'now')
+			'dateTimeBetween' => [new ObjectType(DateTime::class, true), false, false, true, [$this->sp('startDate'), $this->sp('endDate')], false], //@method \DateTime dateTimeBetween($startDate = '-30 years', $endDate = 'now')
 
-			'paragraphs' => [new MixedType(), FALSE, FALSE, TRUE, [$this->ip('nb'), $this->bp('asText')], FALSE], //@method string|array paragraphs($nb = 3, $asText = false)
-			'sentences' => [new MixedType(), FALSE, FALSE, TRUE, [$this->ip('nb'), $this->bp('asText')], FALSE], //@method string|array sentences($nb = 3, $asText = false)
-			'words' => [new MixedType(), FALSE, FALSE, TRUE, [$this->ip('nb'), $this->bp('asText')], FALSE], //@method string|array words($nb = 3, $asText = false)
+			'paragraphs' => [new MixedType(), false, false, true, [$this->ip('nb'), $this->bp('asText')], false], //@method string|array paragraphs($nb = 3, $asText = false)
+			'sentences' => [new MixedType(), false, false, true, [$this->ip('nb'), $this->bp('asText')], false], //@method string|array sentences($nb = 3, $asText = false)
+			'words' => [new MixedType(), false, false, true, [$this->ip('nb'), $this->bp('asText')], false], //@method string|array words($nb = 3, $asText = false)
 
-			'randomKey' => [new MixedType(), FALSE, FALSE, TRUE, [$this->ap('array')], FALSE], //@method int|string|null randomKey(array $array = array())
-			'randomElement' => [new MixedType(), FALSE, FALSE, TRUE, [$this->ap('array')], FALSE], //@method int|string|null randomKey(array $array = array())
+			'randomKey' => [new MixedType(), false, false, true, [$this->ap('array')], false], //@method int|string|null randomKey(array $array = array())
+			'randomElement' => [new MixedType(), false, false, true, [$this->ap('array')], false], //@method int|string|null randomKey(array $array = array())
 
-			'shuffle' => [new MixedType(), FALSE, FALSE, TRUE, [$this->sp('arg')], FALSE], //@method array|string shuffle($arg = '')
+			'shuffle' => [new MixedType(), false, false, true, [$this->sp('arg')], false], //@method array|string shuffle($arg = '')
 
-			'optional' => [new ThisType(Generator::class, TRUE), FALSE, FALSE, TRUE, [$this->fp('weight'), $this->sp('default')], FALSE], //@method Generator optional($weight = 0.5, $default = null)
-			'unique' => [new ThisType(Generator::class, TRUE), FALSE, FALSE, TRUE, [$this->bp('reset'), $this->ip('maxRetries')], FALSE], //@method Generator unique($reset = false, $maxRetries = 10000)
+			'optional' => [new ThisType(Generator::class, true), false, false, true, [$this->fp('weight'), $this->sp('default')], false], //@method Generator optional($weight = 0.5, $default = null)
+			'unique' => [new ThisType(Generator::class, true), false, false, true, [$this->bp('reset'), $this->ip('maxRetries')], false], //@method Generator unique($reset = false, $maxRetries = 10000)
 
-			'numberBetween' => [new IntegerType(TRUE), FALSE, FALSE, TRUE, [$this->ip('min'), $this->ip('max')], FALSE], //@method int numberBetween($min = 0, $max = 2147483647)
-			'randomNumber' => [new IntegerType(TRUE), FALSE, FALSE, TRUE, [$this->ip('nbDigits'), $this->bp('strict')], FALSE], //@method int randomNumber($nbDigits = null, $strict = false)
-			'biasedNumberBetween' => [new IntegerType(TRUE), FALSE, FALSE, TRUE, [$this->ip('min'),$this->ip('max'), $this->sp('function')], FALSE], //@method int biasedNumberBetween($min = 0, $max = 100, $function = 'sqrt')
+			'numberBetween' => [new IntegerType(true), false, false, true, [$this->ip('min'), $this->ip('max')], false], //@method int numberBetween($min = 0, $max = 2147483647)
+			'randomNumber' => [new IntegerType(true), false, false, true, [$this->ip('nbDigits'), $this->bp('strict')], false], //@method int randomNumber($nbDigits = null, $strict = false)
+			'biasedNumberBetween' => [new IntegerType(true), false, false, true, [$this->ip('min'), $this->ip('max'), $this->sp('function')], false], //@method int biasedNumberBetween($min = 0, $max = 100, $function = 'sqrt')
 
-			'randomElements' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ap('array'), $this->ip('count')], FALSE], //@method array randomElements(array $array = array('a', 'b', 'c'), $count = 1)
-			'shuffleArray' => [new StringType(TRUE), FALSE, FALSE, TRUE, [$this->ap('array')], FALSE], //@method array shuffleArray(array $array = array())
+			'randomElements' => [new StringType(true), false, false, true, [$this->ap('array'), $this->ip('count')], false], //@method array randomElements(array $array = array('a', 'b', 'c'), $count = 1)
+			'shuffleArray' => [new StringType(true), false, false, true, [$this->ap('array')], false], //@method array shuffleArray(array $array = array())
 
-			'boolean' => [new TrueOrFalseBooleanType(TRUE), FALSE, FALSE, TRUE, [$this->ip('chanceOfGettingTrue')], FALSE], //@method boolean boolean($chanceOfGettingTrue = 50)
+			'boolean' => [new TrueOrFalseBooleanType(true), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
 
-			'randomFloat' => [new FloatType(TRUE), FALSE, FALSE, TRUE, [$this->ip('nbMaxDecimals'), $this->ip('min'), $this->ip('max')], FALSE], //@method float randomFloat($nbMaxDecimals = null, $min = 0, $max = null)
+			'randomFloat' => [new FloatType(true), false, false, true, [$this->ip('nbMaxDecimals'), $this->ip('min'), $this->ip('max')], false], //@method float randomFloat($nbMaxDecimals = null, $min = 0, $max = null)
 		];
 	}
 
@@ -90,7 +90,6 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function returnMethodImplementation(Type $returnType, ClassReflection $declaringClass, bool $static, bool $private, bool $public, string $name, array $parameters, bool $variadic): MethodReflection
 	{
-
 		return new class($returnType, $declaringClass, $static, $private, $public, $name, $parameters, $variadic) implements MethodReflection
 		{
 
@@ -160,27 +159,27 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function sp(string $name)
 	{
-		return $this->createParameterInstance(new StringType(FALSE), $name, TRUE, FALSE, FALSE);
+		return $this->createParameterInstance(new StringType(false), $name, true, false, false);
 	}
 
 	private function ip(string $name)
 	{
-		return $this->createParameterInstance(new IntegerType(FALSE), $name, TRUE, FALSE, FALSE);
+		return $this->createParameterInstance(new IntegerType(false), $name, true, false, false);
 	}
 
 	private function bp(string $name)
 	{
-		return $this->createParameterInstance(new TrueOrFalseBooleanType(FALSE), $name, TRUE, FALSE, FALSE);
+		return $this->createParameterInstance(new TrueOrFalseBooleanType(false), $name, true, false, false);
 	}
 
 	private function fp(string $name)
 	{
-		return $this->createParameterInstance(new FloatType(FALSE), $name, TRUE, FALSE, FALSE);
+		return $this->createParameterInstance(new FloatType(false), $name, true, false, false);
 	}
 
 	private function ap(string $name)
 	{
-		return $this->createParameterInstance(new ArrayType(new MixedType(), FALSE), $name, TRUE, FALSE, FALSE);
+		return $this->createParameterInstance(new ArrayType(new MixedType(), false), $name, true, false, false);
 	}
 
 	private function createParameterInstance(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic)

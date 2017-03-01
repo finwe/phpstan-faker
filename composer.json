@@ -15,5 +15,17 @@
         }
     },
 
-    "require": {}
+    "require": {
+        "php": "~7.0",
+        "phpstan/phpstan": "^0.6.3",
+        "fzaninotto/faker": "^1.6.0"
+    },
+
+    "require-dev": {
+        "consistence/coding-standard": "~0.12.0",
+        "phing/phing": "^2.16.0",
+        "phpunit/phpunit": "^5.7",
+        "slevomat/coding-standard": "^1.1.1"
+    }
+
 }
