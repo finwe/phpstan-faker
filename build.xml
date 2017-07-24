@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="PHPStan Doctrine extensions" default="check">
+<project name="PHPStan Faker" default="check">
 
 	<target name="check" depends="
 		composer,
