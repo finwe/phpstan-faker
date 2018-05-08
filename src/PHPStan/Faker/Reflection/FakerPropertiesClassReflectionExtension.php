@@ -10,6 +10,7 @@ use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
 use PHPStan\Type\ArrayType;
+use PHPStan\Type\MixedType;
 use PHPStan\Type\FloatType;
 use PHPStan\Type\IntegerType;
 use PHPStan\Type\ObjectType;
@@ -36,7 +37,7 @@ class FakerPropertiesClassReflectionExtension implements PropertiesClassReflecti
 			'dateTimeThisDecade' => [new ObjectType(DateTime::class), false, false, true],
 			'dateTimeThisMonth' => [new ObjectType(DateTime::class), false, false, true],
 			'dateTimeThisYear' => [new ObjectType(DateTime::class), false, false, true],
-			'rgbColorAsArray' => [new ArrayType(new IntegerType()), false, false, true],
+			'rgbColorAsArray' => [new ArrayType(new MixedType(), new IntegerType()), false, false, true],
 
 			'boolean' => [new TrueOrFalseBooleanType(), false, false, true],
 

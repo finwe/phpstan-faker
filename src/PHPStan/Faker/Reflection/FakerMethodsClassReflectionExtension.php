@@ -207,7 +207,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function ap(string $name): ParameterReflection
 	{
-		return $this->createParameterInstance(new ArrayType(new MixedType(), false), $name, true, false, false);
+		return $this->createParameterInstance(new ArrayType(new MixedType(), new MixedType(), false), $name, true, false, false);
 	}
 
 	private function createParameterInstance(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic): ParameterReflection
