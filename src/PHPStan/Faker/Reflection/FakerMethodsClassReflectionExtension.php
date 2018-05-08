@@ -102,6 +102,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 	 * @param string $name
 	 * @param mixed[] $parameters
 	 * @param bool $variadic
+     * @return MethodReflection
 	 */
 	private function returnMethodImplementation(Type $returnType, ClassReflection $declaringClass, bool $static, bool $private, bool $public, string $name, array $parameters, bool $variadic): MethodReflection
 	{
