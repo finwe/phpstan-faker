@@ -17,7 +17,7 @@ use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\ThisType;
-use PHPStan\Type\TrueOrfalseBooleanType;
+use PHPStan\Type\TrueOrFalseBooleanType;
 use PHPStan\Type\Type;
 
 class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExtension
