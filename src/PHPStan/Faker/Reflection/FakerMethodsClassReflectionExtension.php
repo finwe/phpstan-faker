@@ -74,7 +74,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			'randomElements' => [new StringType(), false, false, true, [$this->ap('array'), $this->ip('count')], false], //@method array randomElements(array $array = array('a', 'b', 'c'), $count = 1)
 			'shuffleArray' => [new StringType(), false, false, true, [$this->ap('array')], false], //@method array shuffleArray(array $array = array())
 
-			'boolean' => [new TrueOrfalseBooleanType(), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
+			'boolean' => [new TrueOrFalseBooleanType(), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
 
 			'randomFloat' => [new FloatType(), false, false, true, [$this->ip('nbMaxDecimals'), $this->ip('min'), $this->ip('max')], false], //@method float randomFloat($nbMaxDecimals = null, $min = 0, $max = null)
 		];
@@ -132,7 +132,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function bp(string $name): ParameterReflection
 	{
-		return $this->createParameterInstance(new TrueOrfalseBooleanType(), $name, true, false, false);
+		return $this->createParameterInstance(new TrueOrFalseBooleanType(), $name, true, false, false);
 	}
 
 	private function ip(string $name): ParameterReflection
