@@ -80,76 +80,6 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 		];
 	}
 
-	private function sp(string $name): ParameterReflection
-	{
-		return $this->createParameterInstance(new StringType(), $name, true, false, false);
-	}
-
-	private function createParameterInstance(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic): ParameterReflection
-	{
-		return new class($type, $name, $optional, $passedByReference, $variadic) implements ParameterReflection
-		{
-			/**
-			 * @var mixed
-			 */
-			private $type, $name, $optional, $passedByReference, $variadic;
-
-			public function __construct(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic)
-			{
-				$this->type = $type;
-				$this->name = $name;
-				$this->optional = $optional;
-				$this->passedByReference = $passedByReference;
-				$this->variadic = $variadic;
-			}
-
-			public function getName(): string
-			{
-				return $this->name;
-			}
-
-			public function isOptional(): bool
-			{
-				return $this->optional;
-			}
-
-			public function getType(): Type
-			{
-				return $this->type;
-			}
-
-			public function isPassedByReference(): bool
-			{
-				return $this->passedByReference;
-			}
-
-			public function isVariadic(): bool
-			{
-				return $this->variadic;
-			}
-		};
-	}
-
-	private function bp(string $name): ParameterReflection
-	{
-		return $this->createParameterInstance(new TrueOrFalseBooleanType(), $name, true, false, false);
-	}
-
-	private function ip(string $name): ParameterReflection
-	{
-		return $this->createParameterInstance(new IntegerType(), $name, true, false, false);
-	}
-
-	private function ap(string $name): ParameterReflection
-	{
-		return $this->createParameterInstance(new ArrayType(new MixedType(), new MixedType(), false), $name, true, false, false);
-	}
-
-	private function fp(string $name): ParameterReflection
-	{
-		return $this->createParameterInstance(new FloatType(), $name, true, false, false);
-	}
-
 	public function hasMethod(ClassReflection $classReflection, string $methodName): bool
 	{
 		return $classReflection->getName() === Generator::class
@@ -164,14 +94,14 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 	}
 
 	/**
-	 * @param \PHPStan\Type\Type                  $returnType
+	 * @param \PHPStan\Type\Type $returnType
 	 * @param \PHPStan\Reflection\ClassReflection $declaringClass
-	 * @param bool                                $static
-	 * @param bool                                $private
-	 * @param bool                                $public
-	 * @param string                              $name
-	 * @param mixed[]                             $parameters
-	 * @param bool                                $variadic
+	 * @param bool $static
+	 * @param bool $private
+	 * @param bool $public
+	 * @param string $name
+	 * @param mixed[] $parameters
+	 * @param bool $variadic
 	 */
 	private function returnMethodImplementation(Type $returnType, ClassReflection $declaringClass, bool $static, bool $private, bool $public, string $name, array $parameters, bool $variadic): MethodReflection
 	{
@@ -184,14 +114,14 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			private $returnType, $declaringClass, $static, $private, $public, $name, $parameters, $variadic;
 
 			/**
-			 * @param \PHPStan\Type\Type                  $returnType
+			 * @param \PHPStan\Type\Type $returnType
 			 * @param \PHPStan\Reflection\ClassReflection $declaringClass
-			 * @param bool                                $static
-			 * @param bool                                $private
-			 * @param bool                                $public
-			 * @param string                              $name
-			 * @param mixed[]                             $parameters
-			 * @param bool                                $variadic
+			 * @param bool $static
+			 * @param bool $private
+			 * @param bool $public
+			 * @param string $name
+			 * @param mixed[] $parameters
+			 * @param bool $variadic
 			 */
 			public function __construct(Type $returnType, ClassReflection $declaringClass, bool $static, bool $private, bool $public, string $name, array $parameters, bool $variadic)
 			{
@@ -251,6 +181,76 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			public function getReturnType(): Type
 			{
 				return $this->returnType;
+			}
+		};
+	}
+
+	private function sp(string $name): ParameterReflection
+	{
+		return $this->createParameterInstance(new StringType(), $name, true, false, false);
+	}
+
+	private function ip(string $name): ParameterReflection
+	{
+		return $this->createParameterInstance(new IntegerType(), $name, true, false, false);
+	}
+
+	private function bp(string $name): ParameterReflection
+	{
+		return $this->createParameterInstance(new TrueOrFalseBooleanType(), $name, true, false, false);
+	}
+
+	private function fp(string $name): ParameterReflection
+	{
+		return $this->createParameterInstance(new FloatType(), $name, true, false, false);
+	}
+
+	private function ap(string $name): ParameterReflection
+	{
+		return $this->createParameterInstance(new ArrayType(new MixedType(), new MixedType(), false), $name, true, false, false);
+	}
+
+	private function createParameterInstance(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic): ParameterReflection
+	{
+		return new class($type, $name, $optional, $passedByReference, $variadic) implements ParameterReflection
+		{
+			/**
+			 * @var mixed
+			 */
+			private $type, $name, $optional, $passedByReference, $variadic;
+
+			public function __construct(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic)
+			{
+				$this->type = $type;
+				$this->name = $name;
+				$this->optional = $optional;
+				$this->passedByReference = $passedByReference;
+				$this->variadic = $variadic;
+			}
+
+			public function getName(): string
+			{
+				return $this->name;
+			}
+
+			public function isOptional(): bool
+			{
+				return $this->optional;
+			}
+
+			public function getType(): Type
+			{
+				return $this->type;
+			}
+
+			public function isPassedByReference(): bool
+			{
+				return $this->passedByReference;
+			}
+
+			public function isVariadic(): bool
+			{
+				return $this->variadic;
 			}
 		};
 	}
