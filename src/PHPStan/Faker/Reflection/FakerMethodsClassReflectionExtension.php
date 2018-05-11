@@ -17,7 +17,7 @@ use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\ThisType;
-use PHPStan\Type\TrueOrfalseBooleanType;
+use PHPStan\Type\TrueOrFalseBooleanType;
 use PHPStan\Type\Type;
 
 class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExtension
@@ -74,7 +74,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			'randomElements' => [new StringType(), false, false, true, [$this->ap('array'), $this->ip('count')], false], //@method array randomElements(array $array = array('a', 'b', 'c'), $count = 1)
 			'shuffleArray' => [new StringType(), false, false, true, [$this->ap('array')], false], //@method array shuffleArray(array $array = array())
 
-			'boolean' => [new TrueOrfalseBooleanType(), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
+			'boolean' => [new TrueOrFalseBooleanType(), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
 
 			'randomFloat' => [new FloatType(), false, false, true, [$this->ip('nbMaxDecimals'), $this->ip('min'), $this->ip('max')], false], //@method float randomFloat($nbMaxDecimals = null, $min = 0, $max = null)
 		];
@@ -83,7 +83,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 	public function hasMethod(ClassReflection $classReflection, string $methodName): bool
 	{
 		return $classReflection->getName() === Generator::class
-			&& array_key_exists($methodName, $this->methods);
+			&& \array_key_exists($methodName, $this->methods);
 	}
 
 	public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
@@ -197,7 +197,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function bp(string $name): ParameterReflection
 	{
-		return $this->createParameterInstance(new TrueOrfalseBooleanType(), $name, true, false, false);
+		return $this->createParameterInstance(new TrueOrFalseBooleanType(), $name, true, false, false);
 	}
 
 	private function fp(string $name): ParameterReflection
@@ -207,7 +207,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function ap(string $name): ParameterReflection
 	{
-		return $this->createParameterInstance(new ArrayType(new MixedType(), false), $name, true, false, false);
+		return $this->createParameterInstance(new ArrayType(new MixedType(), new MixedType(), false), $name, true, false, false);
 	}
 
 	private function createParameterInstance(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic): ParameterReflection

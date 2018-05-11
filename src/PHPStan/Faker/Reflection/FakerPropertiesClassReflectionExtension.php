@@ -36,7 +36,7 @@ class FakerPropertiesClassReflectionExtension implements PropertiesClassReflecti
 			'dateTimeThisDecade' => [new ObjectType(DateTime::class), false, false, true],
 			'dateTimeThisMonth' => [new ObjectType(DateTime::class), false, false, true],
 			'dateTimeThisYear' => [new ObjectType(DateTime::class), false, false, true],
-			'rgbColorAsArray' => [new ArrayType(new IntegerType()), false, false, true],
+			'rgbColorAsArray' => [new ArrayType(new IntegerType(), new IntegerType()), false, false, true],
 
 			'boolean' => [new TrueOrFalseBooleanType(), false, false, true],
 
@@ -152,7 +152,7 @@ class FakerPropertiesClassReflectionExtension implements PropertiesClassReflecti
 	public function hasProperty(ClassReflection $classReflection, string $propertyName): bool
 	{
 		return $classReflection->getName() === Generator::class
-			&& array_key_exists($propertyName, $this->properties);
+			&& \array_key_exists($propertyName, $this->properties);
 	}
 
 	public function getProperty(ClassReflection $classReflection, string $propertyName): PropertyReflection
