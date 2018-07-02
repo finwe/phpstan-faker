@@ -6,18 +6,21 @@ namespace Finwe\PHPStan\Faker\Reflection;
 
 use DateTime;
 use Faker\Generator;
+use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\ClassReflection;
+use PHPStan\Reflection\FunctionVariant;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
 use PHPStan\Reflection\ParameterReflection;
+use PHPStan\Reflection\PassedByReference;
 use PHPStan\Type\ArrayType;
+use PHPStan\Type\BooleanType;
 use PHPStan\Type\FloatType;
 use PHPStan\Type\IntegerType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\ThisType;
-use PHPStan\Type\TrueOrFalseBooleanType;
 use PHPStan\Type\Type;
 
 class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExtension
@@ -74,7 +77,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			'randomElements' => [new StringType(), false, false, true, [$this->ap('array'), $this->ip('count')], false], //@method array randomElements(array $array = array('a', 'b', 'c'), $count = 1)
 			'shuffleArray' => [new StringType(), false, false, true, [$this->ap('array')], false], //@method array shuffleArray(array $array = array())
 
-			'boolean' => [new TrueOrFalseBooleanType(), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
+			'boolean' => [new BooleanType(), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
 
 			'randomFloat' => [new FloatType(), false, false, true, [$this->ip('nbMaxDecimals'), $this->ip('min'), $this->ip('max')], false], //@method float randomFloat($nbMaxDecimals = null, $min = 0, $max = null)
 		];
@@ -155,7 +158,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 				return $this->public;
 			}
 
-			public function getPrototype(): MethodReflection
+			public function getPrototype(): ClassMemberReflection
 			{
 				return $this;
 			}
@@ -166,21 +169,13 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			}
 
 			/**
-			 * @return \PHPStan\Reflection\ParameterReflection[]
+			 * @return \PHPStan\Reflection\ParametersAcceptor[]
 			 */
-			public function getParameters(): array
+			public function getVariants(): array
 			{
-				return $this->parameters;
-			}
-
-			public function isVariadic(): bool
-			{
-				return $this->variadic;
-			}
-
-			public function getReturnType(): Type
-			{
-				return $this->returnType;
+				return [
+					new FunctionVariant($this->parameters, $this->variadic, $this->returnType),
+				];
 			}
 		};
 	}
@@ -197,7 +192,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function bp(string $name): ParameterReflection
 	{
-		return $this->createParameterInstance(new TrueOrFalseBooleanType(), $name, true, false, false);
+		return $this->createParameterInstance(new BooleanType(), $name, true, false, false);
 	}
 
 	private function fp(string $name): ParameterReflection
@@ -207,7 +202,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 
 	private function ap(string $name): ParameterReflection
 	{
-		return $this->createParameterInstance(new ArrayType(new MixedType(), new MixedType(), false), $name, true, false, false);
+		return $this->createParameterInstance(new ArrayType(new MixedType(), new MixedType()), $name, true, false, false);
 	}
 
 	private function createParameterInstance(Type $type, string $name, bool $optional, bool $passedByReference, bool $variadic): ParameterReflection
@@ -243,14 +238,16 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 				return $this->type;
 			}
 
-			public function isPassedByReference(): bool
-			{
-				return $this->passedByReference;
-			}
-
 			public function isVariadic(): bool
 			{
 				return $this->variadic;
+			}
+
+			public function passedByReference(): PassedByReference
+			{
+				return $this->passedByReference
+					? PassedByReference::createCreatesNewVariable()
+					: PassedByReference::createNo();
 			}
 		};
 	}
