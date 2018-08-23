@@ -56,7 +56,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			'toLower' => [new StringType(), false, false, true, [$this->sp('string')], false], //@method string toLower($string = '')
 			'toUpper' => [new StringType(), false, false, true, [$this->sp('string')], false], //@method string toUpper($string = '')
 
-			'dateTimeBetween' => [new ObjectType(DateTime::class), false, false, true, [$this->sp('startDate'), $this->sp('endDate')], false], //@method \DateTime dateTimeBetween($startDate = '-30 years', $endDate = 'now')
+			'dateTimeBetween' => [new ObjectType(DateTime::class), false, false, true, [$this->sp('startDate'), $this->sp('endDate'), $this->sp('timezone')], false], //@method \DateTime dateTimeBetween($startDate = '-30 years', $endDate = 'now', $timezone = null)
 
 			'paragraphs' => [new MixedType(), false, false, true, [$this->ip('nb'), $this->bp('asText')], false], //@method string|array paragraphs($nb = 3, $asText = false)
 			'sentences' => [new MixedType(), false, false, true, [$this->ip('nb'), $this->bp('asText')], false], //@method string|array sentences($nb = 3, $asText = false)
