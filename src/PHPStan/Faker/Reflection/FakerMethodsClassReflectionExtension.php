@@ -74,7 +74,7 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			'randomNumber' => [new IntegerType(), false, false, true, [$this->ip('nbDigits'), $this->bp('strict')], false], //@method int randomNumber($nbDigits = null, $strict = false)
 			'biasedNumberBetween' => [new IntegerType(), false, false, true, [$this->ip('min'), $this->ip('max'), $this->sp('function')], false], //@method int biasedNumberBetween($min = 0, $max = 100, $function = 'sqrt')
 
-			'randomElements' => [new StringType(), false, false, true, [$this->ap('array'), $this->ip('count')], false], //@method array randomElements(array $array = array('a', 'b', 'c'), $count = 1)
+			'randomElements' => [new StringType(), false, false, true, [$this->ap('array'), $this->ip('count'), $this->bp('allowDuplicates')], false], //@method array randomElements(array $array = array('a', 'b', 'c'), $count = 1, $allowDuplicates = false)
 			'shuffleArray' => [new StringType(), false, false, true, [$this->ap('array')], false], //@method array shuffleArray(array $array = array())
 
 			'boolean' => [new BooleanType(), false, false, true, [$this->ip('chanceOfGettingTrue')], false], //@method boolean boolean($chanceOfGettingTrue = 50)
