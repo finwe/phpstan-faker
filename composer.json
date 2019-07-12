@@ -13,7 +13,7 @@
     "extra": {
         "phpstan": {
             "includes": [
-                "phpstan.neon"
+                "extension.neon"
             ]
         }
     },
