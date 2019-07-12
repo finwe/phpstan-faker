@@ -1,6 +1,7 @@
 {
     "name": "finwe/phpstan-faker",
     "description": "PHPStan extension for fzaninotto/Faker",
+    "type": "phpstan-extension",
     "license": "MIT",
     "authors": [
         {
@@ -8,6 +9,14 @@
             "email": "finwe@finwe.info"
         }
     ],
+    
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "phpstan.neon"
+            ]
+        }
+    },
 
     "autoload": {
         "psr-4": {
