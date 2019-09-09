@@ -105,6 +105,7 @@ class FakerPropertiesClassReflectionExtension implements PropertiesClassReflecti
 			'macProcessor' => [new StringType(), false, false, true],
 			'md5' => [new StringType(), false, false, true],
 			'mimeType' => [new StringType(), false, false, true],
+			'mobileNumber' => [new StringType(), false, false, true],
 			'opera' => [new StringType(), false, false, true],
 			'paragraph' => [new StringType(), false, false, true],
 			'password' => [new StringType(), false, false, true],
