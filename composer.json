@@ -26,7 +26,7 @@
 
     "require": {
         "php": "~7.1",
-        "phpstan/phpstan": "^0.10 || ^0.11",
+        "phpstan/phpstan": "^0.12",
         "fzaninotto/faker": "^1.6.0"
     },
 

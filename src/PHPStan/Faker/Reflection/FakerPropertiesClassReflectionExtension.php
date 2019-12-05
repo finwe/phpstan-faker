@@ -9,6 +9,7 @@ use Faker\Generator;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
+use PHPStan\TrinaryLogic;
 use PHPStan\Type\ArrayType;
 use PHPStan\Type\BooleanType;
 use PHPStan\Type\FloatType;
@@ -200,9 +201,24 @@ class FakerPropertiesClassReflectionExtension implements PropertiesClassReflecti
 				return $this->public;
 			}
 
-			public function getType(): Type
+			public function getDocComment(): ?string
+			{
+				return null;
+			}
+
+			public function getReadableType(): Type
 			{
 				return $this->type;
+			}
+
+			public function getWritableType(): Type
+			{
+				return $this->type;
+			}
+
+			public function canChangeTypeAfterAssignment(): bool
+			{
+				return true;
 			}
 
 			public function isReadable(): bool
@@ -213,6 +229,21 @@ class FakerPropertiesClassReflectionExtension implements PropertiesClassReflecti
 			public function isWritable(): bool
 			{
 				return true;
+			}
+
+			public function isDeprecated(): TrinaryLogic
+			{
+				return TrinaryLogic::createNo();
+			}
+
+			public function getDeprecatedDescription(): ?string
+			{
+				return null;
+			}
+
+			public function isInternal(): TrinaryLogic
+			{
+				return TrinaryLogic::createNo();
 			}
 		};
 	}
