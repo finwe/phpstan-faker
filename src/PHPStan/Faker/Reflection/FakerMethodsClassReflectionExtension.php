@@ -13,9 +13,11 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
 use PHPStan\Reflection\ParameterReflection;
 use PHPStan\Reflection\PassedByReference;
+use PHPStan\TrinaryLogic;
 use PHPStan\Type\ArrayType;
 use PHPStan\Type\BooleanType;
 use PHPStan\Type\FloatType;
+use PHPStan\Type\Generic\TemplateTypeMap;
 use PHPStan\Type\IntegerType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
@@ -158,14 +160,19 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 				return $this->public;
 			}
 
-			public function getPrototype(): ClassMemberReflection
+			public function getDocComment(): ?string
 			{
-				return $this;
+				return null;
 			}
 
 			public function getName(): string
 			{
 				return $this->name;
+			}
+
+			public function getPrototype(): ClassMemberReflection
+			{
+				return $this;
 			}
 
 			/**
@@ -174,8 +181,42 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 			public function getVariants(): array
 			{
 				return [
-					new FunctionVariant($this->parameters, $this->variadic, $this->returnType),
+					new FunctionVariant(
+						new TemplateTypeMap([]),
+						null,
+						$this->parameters,
+						$this->variadic,
+						$this->returnType
+					),
 				];
+			}
+
+			public function isDeprecated(): TrinaryLogic
+			{
+				return TrinaryLogic::createNo();
+			}
+
+			public function getDeprecatedDescription(): ?string
+			{
+				return null;
+			}
+
+			public function isFinal(): TrinaryLogic
+			{
+				return TrinaryLogic::createYes();
+			}
+
+			public function isInternal(): TrinaryLogic
+			{
+				return TrinaryLogic::createNo();
+			}
+			public function getThrowType(): ?Type
+			{
+				return null;
+			}
+			public function hasSideEffects(): TrinaryLogic
+			{
+				return TrinaryLogic::createNo();
 			}
 		};
 	}
@@ -248,6 +289,11 @@ class FakerMethodsClassReflectionExtension implements MethodsClassReflectionExte
 				return $this->passedByReference
 					? PassedByReference::createCreatesNewVariable()
 					: PassedByReference::createNo();
+			}
+
+			public function getDefaultValue(): ?Type
+			{
+				return null;
 			}
 		};
 	}
