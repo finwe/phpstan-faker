@@ -124,6 +124,8 @@ class FakerPropertiesClassReflectionExtension implements PropertiesClassReflecti
 			'sentence' => [new StringType(), false, false, true],
 			'sha1' => [new StringType(), false, false, true],
 			'sha256' => [new StringType(), false, false, true],
+			'siret' => [new StringType(), false, false, true],
+			'siren' => [new StringType(), false, false, true],
 			'slug' => [new StringType(), false, false, true],
 			'streetAddress' => [new StringType(), false, false, true],
 			'streetName' => [new StringType(), false, false, true],
