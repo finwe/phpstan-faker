@@ -1,5 +1,16 @@
 # Faker extensions for PHPStan
 
+## Deprecation Notice
+
+The problem this project used to solve is no longer present with the latest
+versions of PHPStan and Faker. It is recommended to update those and remove
+this project from your dependencies.
+
+```
+composer update
+composer remove finwe/phpstan-faker
+```
+
 [![Build Status](https://travis-ci.org/finwe/phpstan-faker.svg)](https://travis-ci.org/finwe/phpstan-faker)
 [![Latest Stable Version](https://poser.pugx.org/finwe/phpstan-faker/v/stable)](https://packagist.org/packages/finwe/phpstan-faker)
 [![License](https://poser.pugx.org/finwe/phpstan-faker/license)](https://packagist.org/packages/finwe/phpstan-faker)
